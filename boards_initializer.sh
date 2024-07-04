@@ -13,20 +13,16 @@ touch "$tmp2"
 touch "$cells_to_shoot_on_player2_board_file"
 touch "$cells_to_shoot_on_player1_board_file"
 
-#declare -A player1_board
-#declare -A player2_board
 from=0;
 to=3;
 countOne=1;
 countTwo=1;
 countThree=2;
 
-# Заполняем массив единицами
 for ((i=$from; i< $((to+1)); i++)); do
     for ((j=$from; j< $((to+1)); j++)); do
         echo "$i $j 0" >> $player1_board_file
         echo "$i $j" >> $tmp1
-        #player1_board[$i,$j]=0
     done
 done
 
@@ -46,10 +42,7 @@ while (( i < countThree )); do
 
     if (( $status_of_chosen_cell == 1 )); then
         continue;
-    #if (( player1_board[$random_x, $random_y] == 1 )); then
-    #    continue;
     else 
-        #player1_board[$random_x,$random_y]=1
         sed -i "s/^$random_x $random_y [0-9]$/$random_x $random_y 1/" $player1_board_file
 
         x_plus=$(( random_x+1 )) 
@@ -175,10 +168,7 @@ while (( i < countTwo )); do
 
     if (( $status_of_chosen_cell == 1 )); then
         continue;
-    #if (( player1_board[$random_x, $random_y] == 1 )); then
-    #    continue;
     else 
-        #player1_board[$random_x,$random_y]=1
         sed -i "s/^$random_x $random_y [0-9]$/$random_x $random_y 1/" $player1_board_file
 
         x_plus=$(( random_x+1 )) 
@@ -225,7 +215,6 @@ while (( i < countTwo )); do
         fi
 
     
-        #player1_board[$random_x,$random_y]=1
         sed -i "s/^$random_x $random_y [0-9]$/$random_x $random_y 1/" $player1_board_file
         ((i++))
     fi
@@ -245,25 +234,10 @@ while (( i < countOne )); do
         continue;
     else 
         sed -i "s/^$random_x $random_y [0-9]$/$random_x $random_y 1/" $player1_board_file
-        #player1_board[$random_x,$random_y]=1
         ((i++))
     fi
     echo "One ship. {$random_x}, {$random_y}"
 done
-
-
-# Выводим массив на экран
-#for ((y=$from; y< $((to+1)); y++)); do
-#    row=""
-#    for ((x=$from; x< $((to+1)); x++)); do
-#        cell=$(grep "^$x $y [0-9]$" $player1_board_file | awk '{print $3}')
-#        row="${row}$cell"
-#        row="${row} "    
-#    done
-#    echo "$row"
-#done
-
-#echo
 
 for ((i=$from; i< $((to+1)); i++)); do
     for ((j=$from; j< $((to+1)); j++)); do
@@ -289,10 +263,7 @@ while (( i < countThree )); do
 
     if (( $status_of_chosen_cell == 1 )); then
         continue;
-    #if (( player1_board[$random_x, $random_y] == 1 )); then
-    #    continue;
     else 
-        #player1_board[$random_x,$random_y]=1
         sed -i "s/^$random_x $random_y [0-9]$/$random_x $random_y 1/" $player2_board_file
 
         x_plus=$(( random_x+1 )) 
@@ -415,10 +386,7 @@ while (( i < countTwo )); do
 
     if (( $status_of_chosen_cell == 1 )); then
         continue;
-    #if (( player1_board[$random_x, $random_y] == 1 )); then
-    #    continue;
     else 
-        #player1_board[$random_x,$random_y]=1
         sed -i "s/^$random_x $random_y [0-9]$/$random_x $random_y 1/" $player2_board_file
 
         x_plus=$(( random_x+1 )) 
@@ -465,7 +433,6 @@ while (( i < countTwo )); do
         fi
 
     
-        #player1_board[$random_x,$random_y]=1
         sed -i "s/^$random_x $random_y [0-9]$/$random_x $random_y 1/" $player2_board_file
         ((i++))
     fi
@@ -485,23 +452,10 @@ while (( i < countOne )); do
         continue;
     else 
         sed -i "s/^$random_x $random_y [0-9]$/$random_x $random_y 1/" $player2_board_file
-        #player1_board[$random_x,$random_y]=1
         ((i++))
     fi
     echo "One ship. {$random_x}, {$random_y}"
 done
-
-
-# Выводим массив на экран
-#for ((y=$from; y< $((to+1)); y++)); do
-#    row=""
-#    for ((x=$from; x< $((to+1)); x++)); do
-#        cell=$(grep "^$x $y [0-9]$" $player2_board_file | awk '{print $3}')
-#        row="${row}$cell"
-#        row="${row} "    
-#    done
-#    echo "$row"
-#done
 
 
 
