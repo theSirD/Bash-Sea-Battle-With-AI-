@@ -1,8 +1,13 @@
-###Sea Battle With AI
+### Sea Battle With AI
 
 Handler is responsible for updating game boards after receiving information from the players (2 processes) via pipe.
+There are 4 types of cells on game board:
+0 - water
+1 - ship
+2 - wrecked ship
+3 - miss
 
-##Game flow:
+## Game flow:
 1. Board initialization
 <img width="437" alt="Снимок экрана 2024-07-04 в 23 56 36" src="https://github.com/theSirD/Bash-Sea-Battle-With-AI-/assets/108454328/33839cc0-0299-415c-af3c-7f5ce8b6d14b">
 
